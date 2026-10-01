@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hostel Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-screen" class="login-wrap">
+    <form id="login-form" class="login-card">
+      <div class="logo">🏠</div>
+      <h1>Hostel Management</h1>
+      <p class="sub">Sign in to continue</p>
+      <label>Username<input name="username" autocomplete="username" required></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <div class="err" id="login-err"></div>
+      <button class="btn block">Sign in</button>
+      <p class="hint">Demo admin: <b>admin</b> / <b>admin123</b></p>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <aside>
+      <div class="brand">🏠 Hostel MS</div>
+      <nav id="nav"></nav>
+      <div class="user">
+        <span id="who"></span>
+        <button id="logout" class="btn ghost small">Logout</button>
+      </div>
+    </aside>
+    <main id="content"></main>
+  </div>
+
+  <div id="modal" class="modal"></div>
+  <script src="app.js"></script>
+</body>
+</html>

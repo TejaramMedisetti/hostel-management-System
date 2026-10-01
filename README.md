@@ -18,6 +18,10 @@ H2 (default) or MySQL, Bean Validation, Swagger UI (springdoc).
 - Student self-service endpoints under `/api/me/**`
 - Global error handling with clean JSON errors
 
+## Web UI
+Open http://localhost:8080 after starting the app. Sign in as admin to manage everything, or as a
+student (email + password set by the admin) to see your room, payments and raise complaints.
+
 ## Run it
 ```bash
 mvn spring-boot:run
@@ -66,3 +70,13 @@ curl -s -X POST localhost:8080/api/allocations -H "Authorization: Bearer $TOKEN"
 | Student self-service | `GET /api/me/profile`, `/allocations`, `/payments`, `/complaints`; `POST /api/me/complaints` |
 
 Admin/Warden can use everything under `/api/**`; students can use `/api/me/**` and read rooms.
+
+## Deploy free on Render
+1. Push this repo to GitHub.
+2. On https://render.com -> **New** -> **Web Service** -> connect the repo.
+3. Runtime: **Docker** (it finds the `Dockerfile` automatically). Instance type: **Free**.
+4. Add environment variable `JWT_SECRET` = output of `openssl rand -base64 48`.
+5. Deploy. Your live link will be `https://<service-name>.onrender.com`.
+
+Free tier notes: the service sleeps after ~15 min idle (first load is slow) and the default in-memory H2
+database resets on restart. For permanent data use the `mysql` profile with a hosted MySQL database.
